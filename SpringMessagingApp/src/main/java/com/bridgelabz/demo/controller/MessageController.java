@@ -1,5 +1,7 @@
 package com.bridgelabz.demo.controller;
 
+import org.springframework.web.bind.annotation.*;
+import com.bridgelabz.demo.dto.UserDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +25,10 @@ public class MessageController {
     @GetMapping("/param/{name}")
     public String sayHelloPath(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz";
+    }
+    
+    @PostMapping("/post")
+    public String sayHelloPost(@RequestBody UserDTO userDTO) {
+        return "Hello " + userDTO.getFirstName() + " " + userDTO.getLastName() + " from BridgeLabz";
     }
 }
